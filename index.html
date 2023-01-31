@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./weather.css">
+    <script src="https://kit.fontawesome.com/f6eb59f24f.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+   
+        <div class="row">
+            <div class="container w-75 text-center mt-2 p-3">
+                <div top-container w-75>
+                <h1 class="index-title mt-5">Know your Weather</h1>
+                <input class="mt-5 text-center w-70 form-control" id="s1" type="text" placeholder="Enter your location">
+                <div class="search-button mt-4 text-center">
+                    <button onclick="search()" type="button" class="btn btn-outline-warning search">Search</button>
+                </div>
+            </div>
+                <div id="result" class="container rounded-pill w-100 text-center mt-3 p-3" style="background-color: rgba(255, 255, 255, 0.238); color: white;">
+                   
+                    </div>
+                </div>
+                
+                 
+                </div>
+
+            </div>
+        </div>
+
+     
+
+
+
+
+</body>
+<script>
+    function search() {
+        loc = s1.value
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${loc}&appid=5b4bee0ba241d092159faf007e166080`).then(data => data.json())
+            .then(data => displayData(data))
+    }
+
+    function displayData(weatherDetails) {
+        locationName = weatherDetails.name
+        locationCountry = weatherDetails.country
+        temperature = Math.floor(weatherDetails.main.temp-275)
+        windSpeed = weatherDetails.wind.speed
+        humidity = weatherDetails.main.humidity
+        tempMin = Math.floor(weatherDetails.main.temp_min-275)
+        tempMax = Math.floor(weatherDetails.main.temp_max-275)
+        result.innerHTML = ` 
+       
+        <div class="weather1 mt-3">
+                        <h3 class="head3">Weather Report</h4>
+                    </div>
+                
+                    <div class="btm-js w-100 col-lg-6 col-md-6 col-sm-12">
+                        <div class="location-name">
+                            <img class="png" src="./images/placeholder.png" alt="">
+                            <h4 class="text-white head4">${locationName}</h4>
+                            
+                        </div>
+                        <div class="temp">
+                            <img class="png" src="./images/cloudy.png" alt="">
+                            <h4 class="text-white head4"> ${temperature}°c</h4>
+                            <h5 class="head5">Temperature</h5>
+                    </div>
+                    <div class="wind">
+                        <img class="png" src="./images/storm.png" alt="">
+                        <h4 class="text-white head4"> ${windSpeed} kmp/h</h4>
+                        <h5 class="head5">Wind Speed</h5>
+                        </div>
+                    
+                    <div class="humidity">
+                       <img class="png" src="./images/humidity.png" alt="">
+                        <h4 class="text-white head4"> ${humidity}%</h4>
+                        <h5 class="head5">Humidity</h5>
+                    </div>
+                    <div class="low-tem">
+                        <img class="png" src="./images/low-temperature.png" alt="">
+                         <h4 class="text-white head4"> ${tempMin}°c</h4>
+                         <h5 class="head5">Low Temp</h5>
+                     </div>
+                    <div class="high-tem">
+                        <img class="png" src="./images/high-temperature.png" alt="">
+                         <h4 class="text-white head4"> ${tempMax}°c</h4>
+                         <h5 class="head5">High Temp</h5>
+                     </div>
+                     </div>
+                     `
+
+    }
+</script>
+
+</html>

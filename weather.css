@@ -1,0 +1,49 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Alegreya+Sans&family=Anton&family=Cormorant+Upright:wght@700&family=Libre+Franklin&family=Montserrat&family=Mulish:wght@500&family=Noto+Sans+JP:wght@900&family=Passions+Conflict&family=Raleway:ital,wght@0,300;1,300&family=Ubuntu&display=swap');
+
+    body {
+        background-image: url(./images/cover3.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+      }
+      .location1{
+        position: absolute;
+        bottom: 80%;
+        margin-left: 1130px;
+        color: #D3DEDC;
+      }
+      
+    .index-title{
+        font-family: 'Passions Conflict', cursive;
+        font-size: 70px;
+    }
+    h3{
+        font-family: 'Raleway', sans-serif;
+    }
+    h4{
+        font-family: 'Raleway', sans-serif;
+    }
+    h5{
+        font-family: 'Aboreto', cursive;
+    }
+
+  
+    .png{
+        height: 55px;
+        width: 70px;
+        margin-bottom: 15px;
+    }
+    .btm-js{
+        display: flex;
+        justify-content: space-evenly;
+        align-self: center;
+    }
+    @media(max-width:480px){
+        .btm-js{
+            display: block;
+        }
+        
+    }
+    
